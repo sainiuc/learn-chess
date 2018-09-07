@@ -1,0 +1,68 @@
+extends ../layout
+
+block includelib
+    // include chessboard.js 
+    include ./chessboardjs.pug
+    //include chess.js
+    include ./chessjs.pug
+    //include the board
+    include ./board.pug
+    //include the engineGame
+    include ./engine.pug
+    //inclue main game
+    include ./main.pug
+    //include socket.io
+    include ./socket.pug
+
+block includestyle
+    include ./style.pug
+block menu
+    div(class='container-fluid')
+        h2(style="text-align:center;") Learn Chess Server
+
+        div(class="row")
+                button(id="newGameButton" class="btn btn-primary") New Game
+        div(class='row' style="margin-top:20px; margin-bottom:20px;")
+                form(id="nameForm" method="" )
+                    label Enter Your Name
+                    input(id="nameInput" class="chat-box" type="text")
+                    span
+                        button(class="btn btn-primary" type='submit') Enter Name
+        div(class='row')
+            form(id="joinGame" method="" )
+                label Enter Host Name
+                input(id="hostName" class="chat-box" type="text")
+                span
+                    button(class="btn btn-primary" type='submit') Join Host
+
+block content
+    div(class="container-fluid")
+        div(class="row")
+            h3(id="name" style="margin-bottom:20px; text-align:center;width:100%;")
+
+        div(class="row")
+            div(id="board" style="width:450px;padding-top:50px; margin:auto;")
+        
+block chat
+    div(class="container-fluid")
+        div(class="row window info")
+            // Info data
+            h3(id="headline" style='text-align:center; width:100%;') Messages
+            
+        div(class="row window moves-history")
+            ul(id='messages' class='messages-window' data-spy='scroll')
+                    
+        div(class="row window chat-box-container")
+            form(id="chatBox" method="" )
+                input(id="chat" class="chat-box" type="text")
+                span
+                    button(class="btn btn-primary" type='submit') Send
+
+        div(class="jumbotron jumbotron-fluid " style="text-align:center; margin-top:20px;padding-top:10px;padding-bottom:10px")
+            div(class="container")
+                p(class='engineStatus') Engine Status
+        //test the log, the scroller is not implemented
+        div(class="row")
+            div
+                p(class="logger") Logger :
+        
